@@ -8,6 +8,7 @@
  },
   "scripts": {
     "start": "node index.js"
+    "test": "jest"
   },
   "author": "Your Name",
   "license": "ISC"
