@@ -1,6 +1,7 @@
 name: NODE-JS
 
 on: [workflow_dispatch, push]
+permissions: write-all
 
 jobs:
   build:
