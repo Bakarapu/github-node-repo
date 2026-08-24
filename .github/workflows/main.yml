@@ -5,10 +5,16 @@ on: [workflow_dispatch, push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: checkout
         uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          queries: security-extended
 
       - name: Use Node.js
         uses: actions/setup-node@v4
@@ -20,6 +26,9 @@ jobs:
 
       - name: run
         run: npm run build --if-present
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
 
       - name: test
         run: echo "test is passed1"
